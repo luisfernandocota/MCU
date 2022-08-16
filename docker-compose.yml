@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  mcu:
+    image: fernandocota/mcu:latest
+    ports:
+      - "5000:5000"
+    volumes: 
+      -  .:/code
+    working_dir: /code
+    stdin_open: true
+    tty: true
+    environment:
+      - FLASK_APP=run
+      - FLASK_RUN_HOST=0.0.0.0
+      - FLASK_DEBUG=True
+    links:
+      - mongodb
+  mongodb:
+    image: mongo:latest
+    ports:
+      - 27017:27017
+    volumes:
+      - ~/apps/mongo:/data/db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=mcu-user
+      - MONGO_INITDB_ROOT_PASSWORD=ingfer96
+
+volumes:
+    mongodata:

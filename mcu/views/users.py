@@ -7,7 +7,7 @@ from mcu.models.usersModel import Users
 
 usersApp = Blueprint('users', __name__)
 
-@usersApp.route('/api/v1/register', methods=['POST'])
+@usersApp.route('/api/v1/users/register', methods=['POST'])
 def register():
     #-- Receiving data
     try:
@@ -38,7 +38,7 @@ def register():
     except KeyError as e:
         return jsonify({'message': 'Faltan los campos: ' + str(e.args)})
 
-@usersApp.route('/api/v1/login', methods=['POST', 'GET'])
+@usersApp.route('/api/v1/users/login', methods=['POST', 'GET'])
 def login():
     if request.method == 'POST':
         username = request.json['username']
@@ -75,7 +75,7 @@ def get_user():
     else:
         return jsonify({'message':'Theres no sessions'})
 
-@usersApp.route('/api/v1/logout', methods=['GET'])
+@usersApp.route('/api/v1/users/logout', methods=['GET'])
 def logout():
     if session:
         session.pop('username', None)

@@ -35,7 +35,7 @@ def get_comics():
             comics.append(dic)
     return comics
 
-@comicsApp.route('/api/v1/characters', methods=['GET', 'POST'])
+@comicsApp.route('/api/v1/characters', methods=['GET'])
 @comicsApp.route('/api/v1/')
 def get_characters():
     characters = []
