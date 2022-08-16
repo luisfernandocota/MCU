@@ -95,6 +95,26 @@ Return information who user is logged
 ```
 Logout user in session active
 
+#### Add to layaway comic
+
+```http
+  POST /api/v1/addToLayaway
+```
+Add comic and user reference to layaway
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `comic_id` | `string` | **Required**. Id of comic |
+| `username` | `string` | **Required**. Username string |
+
+#### get layaway comics list
+
+```http
+  GET /api/v1/getLayawayList
+```
+Return JSON of list of layaway comics
+
+
 ## Installation
 
 Install mcu-project with docker, clone this project and run this command
