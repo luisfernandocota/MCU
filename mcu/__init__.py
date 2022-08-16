@@ -8,7 +8,12 @@ def init_app():
 
     appFlask = Flask(__name__)
     appFlask.config['SECRET_KEY'] = '7287796dd4634627b4244629fa7b5f46'
-    appFlask.config["MONGODB_DB"] = 'mcu'        
+    appFlask.config["MONGODB_DB"] = 'mcu'  
+    appFlask.config["PRIVATE_KEY"] = 'ea5a1e28d4a8538fdbb7a3075652ecb2751dff19'
+    appFlask.config["PUBLIC_KEY"] = '3b1f9fbd703b97760646feb9edec50ec'
+    appFlask.config['HASH'] = '45e26205f035f4fe7ab8d16f450733d8'
+    appFlask.config['TS'] = 1
+
     db.connect(
         'mcu',
         username='mcu-user',
@@ -27,5 +32,8 @@ def init_app():
 
     from .views.comics import comicsApp
     appFlask.register_blueprint(comicsApp)
+
+    from .views.layaway import layawayApp
+    appFlask.register_blueprint(layawayApp)
 
     return appFlask
